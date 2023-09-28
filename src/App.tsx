@@ -31,7 +31,7 @@ class App extends Component<{}, IState> {
    * Render Graph react component with state.data parse as property data
    */
   renderGraph() {
-    if (!this.state.showGraph) {
+    if (this.state.showGraph) {
       return (<Graph data={this.state.data}/>)
     }
   }
@@ -43,7 +43,7 @@ class App extends Component<{}, IState> {
     let x = 0;
     const interval = setInterval(() => {
       DataStreamer.getData((serverResponds: ServerRespond[]) => {
-        this.setState({ data: serverResponds, showGraph: true});
+        this.setState({ data: serverResponds, showGraph: true,});
       });
       x++;
       if (x > 1000) {
